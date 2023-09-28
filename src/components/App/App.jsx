@@ -10,7 +10,7 @@ import Admin from '../Admin/Admin'
 <admin></admin>;
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
 const displayPizza = () => {
   axios.get("/api/pizza/")
   .then((response) => {
@@ -65,7 +65,7 @@ const postOrder = () => {
         </nav>
         <Switch>  
         <Route path="/" exact>
-          <Home />
+          <Home displayPizza={displayPizza} />
           <p>Home Component is here</p>
         </Route>
         <Route path="/customer" exact>

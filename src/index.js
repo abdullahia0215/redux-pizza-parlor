@@ -11,7 +11,7 @@ const pizzaReducer = (state = [], action) => {
       case "SET_PIZZA":
         return action.payload;
       default:
-        return state;
+        return state; 
     }
   };
 
