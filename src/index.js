@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
-import { createStore, combineReducers, applyMiddleware } from "redux";
+import { legacy_createStore as createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import logger from 'redux-logger';
 
@@ -26,11 +26,23 @@ const pizzaReducer = (state = [], action) => {
     }
   };
 
+  const lineItemReducer = (state = [], action) => {
+    switch (action.type) {
+      case "SET_LINE_ITEM":
+        return action.payload;
+        case "ADD_LINE_ITEM":
+          return [...state, action.payload];
+      default:
+        return state;
+    }
+  };
+
 
 const store = createStore(
   combineReducers({
     orderReducer,
-    pizzaReducer
+    pizzaReducer,
+    lineItemReducer
   }),
   applyMiddleware(logger)
 );
