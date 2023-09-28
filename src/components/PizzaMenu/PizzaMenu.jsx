@@ -1,14 +1,19 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-export default function PizzaMenu(pizza) {
-  const dispatch = useDispatch();
+export default function PizzaMenu({menuItem}) {
+console.log(menuItem);
 
-  console.log(pList);
-dispatch({ type: "SET_PIZZA", payload: pizza}) //DOUBLE CHECK PAYLOAD TERMINOLOGY
-  return (<div>
-    <div>{pizza.image_path} {pizza.name} {pizza.descriptionz} {pizza.price}
-    <button onClick={addToCart}>add/remove</button>
+function addToCart() {
+    console.log("clicked add/remove");
+}
+  return (
+    <div>
+      <div>
+        <div><img src={menuItem.image_path}></img> {menuItem.name} {menuItem.description}{" "}
+        {menuItem.price}</div>
+        <button onClick={addToCart}>add/remove</button>
+      </div>
     </div>
-    </div>
-)}
+  );
+}
