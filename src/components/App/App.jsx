@@ -7,11 +7,11 @@ import Home from '../Home/Home';
 import CustomerForm from '../CustomerForm/CustomerForm';
 import Checkout from '../Checkout/Checkout';
 import Admin from '../Admin/Admin'
-<admin></admin>;
+
 
 function App() {
   const dispatch = useDispatch();
-const displayPizza = () => {
+  const displayPizza = () => {
   axios.get("/api/pizza/")
   .then((response) => {
     console.log(response.data);
@@ -77,8 +77,7 @@ const postOrder = () => {
           <p>Checkout Component goes here</p>
         </Route>
         <Route path="/admin">
-          {/* <ADMIN /> */}
-          <p>Hidden Admin Page Goes here. No peeking!</p>
+          <Admin />
         </Route>
         </Switch>
       </Router>
