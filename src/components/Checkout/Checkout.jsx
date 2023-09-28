@@ -61,4 +61,6 @@ export default function Checkout({ displayOrder }) {
       <button className="checkoutButton" onClick={handleCheckout}>Checkout</button>
     </>
   );
+
+  
 }
