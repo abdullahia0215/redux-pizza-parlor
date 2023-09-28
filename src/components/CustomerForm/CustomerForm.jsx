@@ -40,7 +40,7 @@ export default function CustomerForm() {
       zip: zipToAdd,
       receptionMethod: receptionMethod,
     };
-    dispatch({ type: 'ADD_NEW_CUSTOMER_INFO', payload: infoToAdd });
+    dispatch({ type: 'SET_ORDER', payload: infoToAdd });
     history.push('/checkout');
   };
 
