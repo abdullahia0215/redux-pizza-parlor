@@ -6,7 +6,8 @@ import { useDispatch } from "react-redux";
 import Home from '../Home/Home';
 import CustomerForm from '../CustomerForm/CustomerForm';
 import Checkout from '../Checkout/Checkout';
-import Admin from './Admin/Admin';
+import Admin from '../Admin/Admin'
+<admin></admin>;
 
 function App() {
   const dispatch = useDispatch();
@@ -54,21 +55,24 @@ const postOrder = () => {
         <h1 className='App-title'>Prime Pizza</h1>
       </header>
       <Router>
+      <nav>
         <ul>
-<li><NavLink exact to="/">Home</NavLink></li>
-<li><NavLink exact to="/customer">Customer Information</NavLink></li>
-<li><NavLink exact to="/checkout">Checkout</NavLink></li>
+          <li><NavLink exact to="/">Home</NavLink></li>
+        <li><NavLink  exact to="/customer">Customer Information</NavLink></li>
+        <li><NavLink exact to="/checkout">Checkout</NavLink></li>
+        <li><NavLink exact to="/admin">Admin</NavLink></li>
         </ul>
+        </nav>
         <Switch>  
-        <Route path="/">
-          {/* <Home /> */}
+        <Route path="/" exact>
+          <Home />
           <p>Home Component is here</p>
         </Route>
-        <Route path="/customer">
-          {/* <CustomerForm /> */}
+        <Route path="/customer" exact>
+          <CustomerForm />
           <p>Customer Form goes here</p>
         </Route>
-        <Route path="/checkout">
+        <Route path="/checkout" exact>
           {/* <Checkout/> */}
           <p>Checkout Component goes here</p>
         </Route>
