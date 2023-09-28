@@ -26,10 +26,24 @@ const orderReducer = (state = [], action) => {
   }
 };
 
+   
+  const lineItemReducer = (state = [], action) => {
+    switch (action.type) {
+      case "SET_LINE_ITEM":
+        return action.payload;
+        case "ADD_LINE_ITEM":
+          return [...state, action.payload];
+      default:
+        return state;
+    }
+  };
+
+
 const store = createStore(
   combineReducers({
     orderReducer,
     pizzaReducer,
+    lineItemReducer
   }),
   applyMiddleware(logger)
 );
