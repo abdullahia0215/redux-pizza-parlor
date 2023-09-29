@@ -1,4 +1,4 @@
-.menuContainer {
+/* .menuContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 20px;
@@ -62,4 +62,74 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+} */
+.menuContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.menuCard {
+background-color: #ffffff;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+border-radius: 10px;
+overflow: hidden; /* Makes sure child elements do not spill out of the rounded corners */
+text-align: center;
+padding: 20px;
+cursor: pointer;
+}
+
+.menuCard:hover {
+transform: translateY(-10px); /* Adds a lift effect */
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.img {
+width: 100%;
+height: auto;
+border-radius: 10px;
+object-fit: cover; /* Ensures images maintain their aspect ratio */
+margin-bottom: 15px;
+}
+
+.menuItem {
+background-color: #3f51b5;
+color: #ffffff;
+border: none;
+padding: 10px;
+border-radius: 25px;
+font-size: 16px;
+transition: background-color 0.3s ease;
+margin-top: 15px;
+}
+
+.menuItem:hover {
+background-color: #E19539;
+}
+
+.actions {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 20px;
+}
+
+.quantity-controls {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.quantity-controls button {
+background-color: #f5f5f5;
+border: none;
+padding: 5px 10px;
+border-radius: 5px;
+transition: background-color 0.3s ease;
+}
+
+.quantity-controls button:hover {
+background-color: #e0e0e0;
 }
