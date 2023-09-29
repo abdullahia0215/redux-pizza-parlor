@@ -26,7 +26,7 @@ const decreaseQuantity = () => {
   return (
     <div className="container">
         <div className="menuCard" >
-          <img src={menuItem.image_path}
+          <img className="img" src={menuItem.image_path}
           style={{ width: "200px", height: "200px" }}></img> {menuItem.name} {menuItem.description}{" "}
         <br />
         <p>{menuItem.price}</p>

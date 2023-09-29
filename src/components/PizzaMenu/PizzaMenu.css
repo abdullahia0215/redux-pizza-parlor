@@ -12,6 +12,10 @@
   height: 475px;
   background-color: white;
 }
+.img{
+  max-width: 300px;
+  max-height:300px;
+}
 .menuCard
 :hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);

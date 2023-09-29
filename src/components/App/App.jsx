@@ -74,9 +74,9 @@ function App() {
               </NavLink>
             </li>
             <li>
-               <NavLink exact to="/admin">
+               {/* <NavLink exact to="/admin">
                 Admin
-              </NavLink>
+              </NavLink> */}
               {/* commented out to hide admin  */}
             </li>
           </ul>

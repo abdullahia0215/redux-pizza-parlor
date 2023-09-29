@@ -1,6 +1,22 @@
 .App {
   text-align: center;
 }
+.container{
+  display: flex;
+  flex-wrap: wrap; /* Cards will wrap to the next row when there's not enough space */
+  justify-content: center; /* Center the cards horizontally */
+  align-items: center;
+}
+
+.menuCard {
+  width: 200px; /* Adjust the width of your menu cards */
+  border: 20px; /* Add margin between cards */
+  padding: 10px; /* Add padding inside cards */
+  text-align: center; /* Center the text within cards */
+  background-color: #fff; /* Card background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
 
 .App-header {
   background-color: #222;
@@ -154,4 +170,31 @@ tr:hover {
   right: 150px;
   font-size: 30px;
   font-style: normal;
+}
+
+.goBack {
+  position: absolute;
+    right: 0;
+    margin-right: 30px;
+  background-color: #ffffff;
+  border-radius: 100px;
+  
+  color: black;
+  cursor: pointer;
+  
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.goBack:hover  {
+    background-color: #E19539;
+   box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
 }

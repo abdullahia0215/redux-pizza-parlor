@@ -45,14 +45,16 @@ const allOrderReducer =( state=[], action) => {
 
   const cartReducer = (state = [], action) => {
     switch (action.type) {
-    case "ADD_TO_CART":
-      return [...state, action.payload];
+      case "ADD_TO_CART":
+        return [...state, action.payload];
+      case "REMOVE_FROM_CART":
+        return state.filter(pizza => pizza.id !== action.payload);
       case "CLEAR_CART":
         return [];
-        case "[]":
+      case "[]":
+        return [];
+      case "CLEAR_CART":
           return [];
-          case "CLEAR_CART":
-            return [];
         default:
           return state;
     }

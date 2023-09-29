@@ -10,7 +10,14 @@ export default function Checkout({ displayOrder }) {
   const customer = useSelector((store) => store.orderReducer);
   const cartList = useSelector((store) => store.cartReducer);
 
+  function goBack() {
+    history.push("/customer");
 
+  }
+  // remove from table
+  const handleRemoveFromCart = (pizzaId) => {
+    dispatch({ type: "REMOVE_FROM_CART", payload: pizzaId });
+  };
 
   let cartTotal = 0;
   for (let i = 0; i < cartList.length; i++) {
@@ -59,7 +66,8 @@ export default function Checkout({ displayOrder }) {
 
   return (
     <>
-       <h2 className="admin-header">Checkout</h2>
+       <h2 className="admin-header">Checkout<button onClick={goBack} className="goBack">Go Back To Customer Information</button></h2>
+
 
      <div className="address"> 
           <address key={customer.id}>
@@ -74,6 +82,7 @@ export default function Checkout({ displayOrder }) {
           <tr>
             <th>Name </th>
             <th>Price </th>
+            <th>Action </th>
           </tr>
         </thead>
         <tbody>
@@ -81,8 +90,11 @@ export default function Checkout({ displayOrder }) {
             return (
                 <tr key={order.id}>
                     <td>{order.name}</td>
-                    <td>{order.price} x {order.quantity } = {Number(order.price) * Number(order.quantity)}</td>
-    </tr>
+                    <td>${order.price} x {order.quantity } = ${Number(order.price) * Number(order.quantity)}</td>
+                    <td>
+                      <button onClick={() => handleRemoveFromCart(order.id)}>Remove</button>
+                    </td>
+                </tr>
             );
           })}
         </tbody>

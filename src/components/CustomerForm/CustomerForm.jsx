@@ -46,8 +46,13 @@ const addCustomerInfo = (event) => {
   history.push("/checkout");
 };
 
+function goBack() {
+  history.push("/");
+
+}
+
   return (
-    <> <h2 className="admin-header">Customer Form</h2>
+    <> <h2 className="admin-header">Customer Form <button onClick={goBack} className="goBack">Go Back To Home</button></h2>
     <form onSubmit={addCustomerInfo}>
       <input
         onChange={handleNameChange}
