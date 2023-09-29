@@ -92,7 +92,7 @@ export default function Checkout({ displayOrder }) {
                     <td>{order.name}</td>
                     <td>${order.price} x {order.quantity } = ${Number(order.price) * Number(order.quantity)}</td>
                     <td>
-                      <button onClick={() => handleRemoveFromCart(order.id)}>Remove</button>
+                      <button className="checkoutButton" onClick={() => handleRemoveFromCart(order.id)}>Remove</button>
                     </td>
                 </tr>
             );

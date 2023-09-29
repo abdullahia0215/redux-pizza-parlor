@@ -19,49 +19,44 @@ const orderReducer = (state = {}, action) => {
   switch (action.type) {
     case "ADD_ORDER":
       return action.payload;
-      case "CLEAR_ORDER":
-        return {}
+    case "CLEAR_ORDER":
+      return {};
     default:
       return state;
   }
 };
 
-const allOrderReducer =( state=[], action) => {
+const allOrderReducer = (state = [], action) => {
   switch (action.type) {
     case "SET_ALL_ORDERS":
-      return action.payload
-      case "ADD_ORDER":
-      return [...state, action.payload]
-      case "CLEAR_ORDER":
-        return []
-      // case "ADD_TO_CART":
-      // return [...state, action.payload];
-      default:
-        return state;
+      return action.payload;
+    case "ADD_ORDER":
+      return [...state, action.payload];
+    case "CLEAR_ORDER":
+      return [];
+    // case "ADD_TO_CART":
+    // return [...state, action.payload];
+    default:
+      return state;
   }
-}  
+};
 
-
-
-  const cartReducer = (state = [], action) => {
-    switch (action.type) {
-      case "ADD_TO_CART":
-        return [...state, action.payload];
-      case "REMOVE_FROM_CART":
-        return state.filter(pizza => pizza.id !== action.payload);
-      case "CLEAR_CART":
-        return [];
-      case "[]":
-        return [];
-      case "CLEAR_CART":
-          return [];
-        default:
-          return state;
-    }
+const cartReducer = (state = [], action) => {
+  switch (action.type) {
+    case "ADD_TO_CART":
+      return [...state, action.payload];
+    case "REMOVE_FROM_CART":
+      return state.filter((pizza) => pizza.id !== action.payload);
+    case "CLEAR_CART":
+      return [];
+    case "[]":
+      return [];
+    case "CLEAR_CART":
+      return [];
+    default:
+      return state;
   }
-  
-  
-
+};
 
 const store = createStore(
   combineReducers({
@@ -69,8 +64,7 @@ const store = createStore(
     pizzaReducer,
     // lineItemReducer,
     cartReducer,
-    allOrderReducer
-
+    allOrderReducer,
   }),
   applyMiddleware(logger)
 );
