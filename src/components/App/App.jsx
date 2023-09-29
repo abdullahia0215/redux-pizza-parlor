@@ -7,7 +7,6 @@ import Home from "../Home/Home";
 import CustomerForm from "../CustomerForm/CustomerForm";
 import Checkout from "../Checkout/Checkout";
 import Admin from "../Admin/Admin";
-<admin></admin>;
 
 function App() {
   const dispatch = useDispatch();
@@ -74,28 +73,25 @@ function App() {
               </NavLink>
             </li>
             <li>
-              <NavLink exact to="/admin">
+               <NavLink exact to="/admin">
                 Admin
               </NavLink>
+              {/* commented out to hide admin  */}
             </li>
           </ul>
         </nav>
         <Switch>
           <Route path="/" exact>
             <Home displayPizza={displayPizza} />
-            <p>Home Component is here</p>
           </Route>
           <Route path="/customer" exact>
             <CustomerForm />
-            <p>Customer Form goes here</p>
           </Route>
           <Route path="/checkout" exact>
-            {/* <Checkout/> */}
-            <p>Checkout Component goes here</p>
+            <Checkout displayOrder={displayOrder}/>
           </Route>
           <Route path="/admin">
-            {/* <ADMIN /> */}
-            <p>Hidden Admin Page Goes here. No peeking!</p>
+            <Admin />
           </Route>
         </Switch>
       </Router>

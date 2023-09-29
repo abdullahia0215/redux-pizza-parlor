@@ -56,3 +56,94 @@ nav ul li a:hover {
 .list {
   padding-top: 60px;
 }
+.address{
+  text-align: left;
+  margin-left: 20px;
+  padding-bottom: 50px;
+
+}
+
+.p_address{
+  margin-bottom: 5px;
+  margin-top: 0;
+  font-size: 26px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: normal;
+}
+
+.checkoutHeader{
+  text-align: left;
+  margin-left: 20px;
+}
+
+.checkoutButton {
+  /* Set the desired positioning */
+  position: absolute;
+  bottom: 45px;
+  right: 70px;
+  background-color: rgb(246, 220, 159);
+  border: 1px solid black;
+  border-radius: 3px;
+  height: 50px;
+  width: 15%;
+  font-size: 20px;
+
+}
+
+.totalPriceCheckout{
+  /* Set the desired positioning */
+  position: absolute;
+ left: 400px;
+  font-size: 40px;
+}
+.checkoutButton:hover {
+  background-color: rgb(255, 126, 46);
+}
+
+/* Apply a more pleasing border style and spacing */
+table {
+  border-collapse: collapse;
+  width: 80%; /* Wider table for better readability */
+  margin: 0 auto; /* Center the table horizontally */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for a 3D effect */
+}
+
+/* Style the table header cells */
+th {
+  background-color: #101010; /* Dark background color for headers */
+  color: #fff; /* White text for headers */
+  font-weight: bold; /* Make text bold */
+  padding: 10px; /* Increase padding for headers */
+  border: 1px solid #ddd; /* Add a border to header cells */
+  text-align: center;
+}
+
+/* Style the table data cells */
+td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+/* Apply alternating row colors */
+tr:nth-child(even) {
+  background-color: #f2f2f2; /* Light gray background for even rows */
+}
+
+/* Style the odd rows differently if desired */
+tr:nth-child(odd) {
+  background-color: #fff; /* White background for odd rows */
+}
+
+/* Highlight rows on hover for better interactivity */
+tr:hover {
+  background-color: #ccc;
+}
+
+.pickupType{
+  position: absolute;
+  top: 275px;
+  right: 150px;
+  font-size: 30px;
+  font-style: normal;
+}

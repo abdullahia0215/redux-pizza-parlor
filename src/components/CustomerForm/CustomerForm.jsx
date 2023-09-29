@@ -1,55 +1,60 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import './CustomerForm.css';
 
 export default function CustomerForm() {
+  const orderList = useSelector((store) => store.orderReducer);
   const history = useHistory();
   const dispatch = useDispatch();
-  const [nameToAdd, setNameToAdd] = useState('');
-  const [addressToAdd, setAddressToAdd] = useState('');
-  const [cityToAdd, setCityToAdd] = useState('');
-  const [zipToAdd, setZipToAdd] = useState('');
-  const [receptionMethod, setReceptionMethod] = useState('');
+  const [customer_name, setCustomer_name] = useState('');
+  const [street_address, setStreet_address] = useState('');
+  const [city, setCity] = useState('');
+  const [zip, setZip] = useState('');
+  const [type, setType] = useState('');
 
   const handleNameChange = (event) => {
-    setNameToAdd(event.target.value);
+    setCustomer_name(event.target.value);
   };
 
   const handleAddressChange = (event) => {
-    setAddressToAdd(event.target.value);
+    setStreet_address(event.target.value);
   };
 
   const handleCityChange = (event) => {
-    setCityToAdd(event.target.value);
+    setCity(event.target.value);
   };
 
   const handleZipChange = (event) => {
-    setZipToAdd(event.target.value);
+    setZip(event.target.value);
   };
 
-  const handleReceptionMethodChange = (event) => {
-    setReceptionMethod(event.target.value);
+  const handletypeChange = (event) => {
+    setType(event.target.value);
   };
 
-  const addCustomerInfo = (event) => {
-    event.preventDefault();
-    const infoToAdd = {
-      name: nameToAdd,
-      address: addressToAdd,
-      city: cityToAdd,
-      zip: zipToAdd,
-      receptionMethod: receptionMethod,
-    };
-    dispatch({ type: 'ADD_NEW_CUSTOMER_INFO', payload: infoToAdd });
-    history.push('/checkout');
+const addCustomerInfo = (event) => {
+  event.preventDefault();
+  const infoToAdd = {
+    customer_name,
+    street_address,
+    city,
+    type,
+    zip,
   };
+  dispatch({ type: "ADD_ORDER", payload: infoToAdd });
+  history.push("/checkout");
+};
 
   return (
+    <> <h2 className="admin-header">Customer Form</h2>
     <form onSubmit={addCustomerInfo}>
       <input
         onChange={handleNameChange}
         type="text"
         placeholder="Name"
+        value={customer_name}
         required
       />
 
@@ -57,6 +62,7 @@ export default function CustomerForm() {
         onChange={handleAddressChange}
         type="text"
         placeholder="Address"
+        value={street_address}
         required
       />
 
@@ -64,6 +70,7 @@ export default function CustomerForm() {
         onChange={handleCityChange}
         type="text"
         placeholder="City"
+        value={city}
         required
       />
 
@@ -71,28 +78,30 @@ export default function CustomerForm() {
         onChange={handleZipChange}
         type="text"
         placeholder="Zip Code"
+        value={zip}
         required
       />
 
       <input
         type="radio"
-        name="receptionMethod"
+        name="type"
         value="delivery"
-        onChange={handleReceptionMethodChange}
+        onChange={handletypeChange}
         required
       />
       <label>Delivery</label>
 
       <input
         type="radio"
-        name="receptionMethod"
+        name="type"
         value="pickup"
-        onChange={handleReceptionMethodChange}
+        onChange={handletypeChange}
         required
       />
       <label>Pickup</label>
 
-      <button type="submit">Next</button>
+      <button type="submit" onClick={addCustomerInfo}>Next</button>
     </form>
+    </>
   );
 }

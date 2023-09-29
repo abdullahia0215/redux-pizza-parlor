@@ -1,13 +1,30 @@
 import { useSelector } from "react-redux";
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { useDispatch } from "react-redux";
+import axios from "axios";
 
 export default function Checkout({ displayOrder }) {
+  const dispatch = useDispatch();
   const history = useHistory();
-  const orderList = useSelector((store) => store.orderReducer);
-  const pizzaList = useSelector((store) => store.pizzaReducer);
+  const customer = useSelector((store) => store.orderReducer);
+  const cartList = useSelector((store) => store. cartReducer);
 
-  console.log(orderList);
+  let cartTotal = 0;
+  for (let i = 0; i < cartList.length; i++) {
+    cartTotal = cartTotal + Number(cartList[i].price);
+  }
+
+  let allInfo={
+    customer_name: customer.customer_name,
+    street_address: customer.street_address,
+    city: customer.city,
+    zip: customer.zip,
+    type: customer.type,
+    total: cartTotal,
+    pizzas: cartList
+}
+
 
   useEffect(() => {
     console.log("in useEffect");
@@ -16,28 +33,38 @@ export default function Checkout({ displayOrder }) {
 
   const handleCheckout = (e) => {
     e.preventDefault();
-    // const artist = {name: newArtist};
+    alert("Your order has been accepted!")
     console.log("submit button");
-    // addArtist(artist);
-    // setNewArtist("");
-    history.push("/");
+    dispatch({ type: "CLEAR_CART" });
+    dispatch({ type: "CLEAR_CART" });
+    postCheckout()
   };
-  //NEED---------------------------------------
-  // POST FUNCTION TO /ORDER
+
+
+  // POST FUNCTION TO /ORDER server
+  const postCheckout = () => {
+    axios.post('/api/order', allInfo)
+      .then((response) => {
+        console.log(response.data);
+        response.send(response.data);
+        history.push("/");
+      })
+      .catch((error) => {
+        console.log("error on POST to add order in DB", error);
+      });
+  };
 
   return (
     <>
-      <h1 className="checkoutHeader"> Step 3: Checkout</h1>
+       <h2 className="admin-header">Checkout</h2>
 
-     <div className="address"> {orderList.map((customer) => {
-        return (
-          <address>
+     <div className="address"> 
+          <address key={customer.id}>
             <p className="p_address">{customer.customer_name}</p>
             <p className="p_address">{customer.street_address}</p>
             <p className="p_address">{customer.city} {customer.zip}</p>
+            <p className="pickupType">For {customer.type}</p>
           </address>
-        );
-      })}
 </div>
       <table>
         <thead>
@@ -47,7 +74,7 @@ export default function Checkout({ displayOrder }) {
           </tr>
         </thead>
         <tbody>
-          {pizzaList.map((order) => {
+          {cartList.map((order) => {
             return (
                 <tr key={order.id}>
                     <td>{order.name}</td>
@@ -57,7 +84,7 @@ export default function Checkout({ displayOrder }) {
           })}
         </tbody>
       </table>
-      <p className="totalPriceCheckout">Total:</p>
+      <p className="totalPriceCheckout">Total: ${cartTotal} </p>
       <button className="checkoutButton" onClick={handleCheckout}>Checkout</button>
     </>
   );
