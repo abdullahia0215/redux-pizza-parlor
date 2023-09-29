@@ -16,6 +16,8 @@ export default function Home(goNext) {
   }
   return (
     <>
+          <h2 className="home-header">Menu</h2>
+
     <br/>
 <button onClick={goNext} className="continue"  >Continue With Order</button>
 <hr/>
