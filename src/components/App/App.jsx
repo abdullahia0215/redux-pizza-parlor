@@ -23,6 +23,7 @@ function App() {
   };
   useEffect(() => {
     displayPizza();
+    displayOrder()
   }, []);
 
   const displayOrder = () => {
@@ -30,7 +31,7 @@ function App() {
       .get("/api/order/")
       .then((response) => {
         console.log(response.data);
-        dispatch({ type: "SET_ORDER", payload: response.data });
+        dispatch({ type: "SET_ALL_ORDERS", payload: response.data });
       })
       .catch((error) => {
         console.log("error on GET to display order reducer", error);
@@ -91,7 +92,7 @@ function App() {
             <Checkout displayOrder={displayOrder}/>
           </Route>
           <Route path="/admin">
-            <Admin />
+            <Admin displayOrder={displayOrder}/>
           </Route>
         </Switch>
       </Router>

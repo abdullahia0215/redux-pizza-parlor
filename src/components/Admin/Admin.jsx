@@ -1,11 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import './Admin.css'; 
-//  date.fns
+import { useEffect } from 'react';
 
-function Admin() {
+function Admin({displayOrder}) {
   const orders = useSelector((state) => state.allOrderReducer);
-  console.log('Orders',orders);
+
+  console.log("orders",orders);
+
+
+  useEffect(() => {
+    displayOrder();
+  }, []);
 
   return (
     <>
@@ -21,20 +27,17 @@ function Admin() {
           </tr>
         </thead>
         <tbody>
-          {orders.map((order) => {
+        {orders.map((order) => {
             return (
               <tr key={order.id}>
-                <td>{order.customer_name}</td>
-                {/* <td>${order.total}</td> */}
-                {/* <td>{new Date(order.time).toLocaleString()}</td> */}
-                
-
-                <td> Ordered on : {date-fns(order.time).fromNow()} </td>
-                <td>{order.type}</td>
+              <td>{order.customer_name}</td>
+              <td>${order.total}</td>
+              <td>{order.time}</td>
+              <td>{order.type}</td>
               </tr>
+
             );
           })}
-            {/* <td>{cartTotal}</td> */}
           
         </tbody>
       </table>
@@ -44,3 +47,5 @@ function Admin() {
 }
 
 export default Admin;
+
+

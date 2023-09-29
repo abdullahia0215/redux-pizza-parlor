@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import './CustomerForm.css';
 
 export default function CustomerForm() {
-  const orderList = useSelector((store) => store.orderReducer);
   const history = useHistory();
   const dispatch = useDispatch();
   const [customer_name, setCustomer_name] = useState('');

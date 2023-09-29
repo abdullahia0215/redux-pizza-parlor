@@ -9,7 +9,6 @@ export default function Home(goNext) {
   const history = useHistory();
 
   const pList = useSelector((store) => store.pizzaReducer);
-  console.log(pList);
   function goNext() {
     history.push("/customer");
 

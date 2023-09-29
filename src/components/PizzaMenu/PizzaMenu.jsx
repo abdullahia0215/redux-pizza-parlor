@@ -15,11 +15,11 @@ const decreaseQuantity = () => {
     setQuantity(quantity - 1);
   }
 };
-  console.log(menuItem);
+  const itemWithQuantity = { ...menuItem, quantity }; // Include quantity in the payload
   const dispatch = useDispatch()
   function addToCart() {
     console.log("clicked add/remove");
-    const itemWithQuantity = { ...menuItem, quantity }; // Include quantity in the payload
+   
     dispatch({ type: "ADD_TO_CART", payload: itemWithQuantity });
   alert("Added item")
 }
@@ -30,11 +30,14 @@ const decreaseQuantity = () => {
           style={{ width: "200px", height: "200px" }}></img> {menuItem.name} {menuItem.description}{" "}
         <br />
         <p>{menuItem.price}</p>
-        <div className="quantity-controls">
-        <button onClick={decreaseQuantity}>-</button>
+        <div className="quantity-controls">{" "}
+        <button onClick={decreaseQuantity}> - </button>
+        {" "}
         <span>{quantity}</span>
-        <button onClick={increaseQuantity}>+</button>
+        {" "}
+        <button onClick={increaseQuantity}> + </button>
       </div>
+      <br />
         <button onClick={(addToCart)} className="menuItem">Add to Cart</button>
         </div>
     </div>

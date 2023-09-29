@@ -28,25 +28,20 @@ const orderReducer = (state = {}, action) => {
 
 const allOrderReducer =( state=[], action) => {
   switch (action.type) {
-    case "ADD_ORDER":
+    case "SET_ALL_ORDERS":
+      return action.payload
+      case "ADD_ORDER":
       return [...state, action.payload]
-      case "ADD_TO_CART":
-      return [...state, action.payload];
+      case "CLEAR_ORDER":
+        return []
+      // case "ADD_TO_CART":
+      // return [...state, action.payload];
       default:
         return state;
   }
 }  
 
-  // const lineItemReducer = (state = {}, action) => {
-  //   switch (action.type) {
-  //       case "ADD_PIZZA":
-  //         return [...state, action.payload];
-  //         case "CLEAR_CART":
-  //           return [];
-  //     default:
-  //       return state;
-  //   }
-  // };
+
 
   const cartReducer = (state = [], action) => {
     switch (action.type) {
