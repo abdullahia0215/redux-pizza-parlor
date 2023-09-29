@@ -1,19 +1,19 @@
 .menuContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 20px;
 }
 .menuCard {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 5px;
-  max-width: 275px;
+  max-width: 300px;
   text-align: center;
   height: 475px;
   background-color: white;
 }
 .img {
-  max-width: 300px;
+  max-width: 330px;
   max-height: 300px;
 }
 .menuCard :hover {
